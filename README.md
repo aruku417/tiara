@@ -5,6 +5,9 @@ Deterministic merges first; a small, precise handoff to your coding agent (Claud
 
 [日本語](README.ja.md)
 
+> **An early version (0.1), not a finished product.** It is meant as a starting point that you and your
+> coding agent adapt to your own repository and workflow - see [Make it yours](#make-it-yours).
+
 When several AI agents work on one repository in parallel, most of the time lost on pull requests is not
 spent writing code. It goes into the loop *open PR → "This branch has conflicts" → pull main → let the agent
 read whole files and fix markers → push → re-run CI*. Many of those conflicts are not real disagreements:
@@ -107,6 +110,28 @@ Optional `.tiara.json` at the repository root (every key is optional):
 - `regenerate`: generated files that must never be merged by hand; tiara keeps the base side and reminds you to rebuild them.
 - `id_rules`: how to match list elements in JSON/YAML, per location (default: `id`, `name`, `key` or `slug`).
 - `insert_both`: set to `false` if the order of inserted blocks matters in your code base.
+
+## Make it yours
+
+tiara is deliberately small. Every team's repositories, folder layout, branch names, generated files and test
+commands are different, so expect to adapt it rather than use it as is. The easiest way is to ask your agent:
+
+> Read tiara's README. Set it up for this repository: write a `.tiara.json` (our base branch, generated files,
+> how list items in our JSON/YAML are identified), put the skill / AGENTS.md text where you read instructions
+> from, and use our real test command in `tiara verify --cmd`.
+
+Things you will probably want to adjust:
+
+- **Base branch and remote** (`base`): `origin/main`, `upstream/develop`, ...
+- **Generated files** (`regenerate`): lock files, build outputs, snapshots, evidence your tooling rebuilds.
+- **Where the agent instructions live**: `.claude/skills/` in the repo or `~/.claude/skills/` for Claude Code,
+  `AGENTS.md` at the root or in a sub-folder for Codex; in a monorepo, one per package if they differ.
+- **The test command** the agent passes to `tiara verify --cmd`.
+- **The rules themselves**: the code is small (`src/tiara/resolve.py`), so adding a resolver for a format your
+  team uses (a lock file, a changelog convention, build numbers...) is a reasonable change to make in your fork.
+
+When tiara cannot help - an error, an unsupported setup - the agent instructions tell the agent to fall back to
+a normal `git merge` and resolve by hand, so nothing is lost.
 
 ## How well does it work?
 

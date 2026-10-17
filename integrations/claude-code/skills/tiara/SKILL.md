@@ -25,5 +25,9 @@ Before you open a pull request or push to one:
 
 To give up at any point: `git merge --abort`.
 
+If tiara itself fails (exit 4: an error, an old git, no `gh`, an unsupported setup), do not fight it:
+run `git merge --abort` if a merge is in progress, merge the base branch the usual way and resolve the
+conflicts yourself, and tell the user what tiara reported.
+
 If `check --prs` says another open PR will conflict with yours when it merges first, tell the user which
 PR and which files, so they can decide the merge order.

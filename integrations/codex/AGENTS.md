@@ -10,5 +10,8 @@ Before opening a pull request or pushing to an open one:
    stop and ask instead of choosing.
 4. Run `tiara verify --commit --cmd "<test command>"`; fix and repeat while it exits 3. Then push.
 
+If tiara itself fails (exit 4), run `git merge --abort` if a merge is in progress, merge the base branch the
+usual way, resolve the conflicts yourself, and report what tiara said.
+
 `git merge --abort` undoes everything. If `check --prs` warns that another open PR will conflict when it
 merges first, report the PR number and files.
