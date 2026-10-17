@@ -126,7 +126,7 @@ tiara がうまく動かないとき（エラー、対応していない構成�
 
 ## 背景
 
-Anthropic が、AI が主役の開発のために Git を Scion に置き換えた話（[Redesigning source control at Anthropic](https://www.anthropic.com/engineering/redesigning-source-control)）をきっかけに始めた実験から、ふつうの Git と GitHub の上で今日から使える部分（サーバー側の乗せ直しと構造マージ）を、新しいソース管理の中ではなく PR の前に使えるように取り出したものです。
+Anthropic の記事「[Redesigning source control at Anthropic](https://www.anthropic.com/engineering/redesigning-source-control)」で紹介された、AI が主役の開発のためのソース管理の考え方（ぶつかりの乗せ直しをツールの側で引き受ける、など）をヒントにした実験から生まれました。そのうち、ふつうの Git と GitHub の上で今日から使える部分を、新しいソース管理としてではなく、PR を出す前の道具として取り出したものです。
 
 ## ライセンス
 

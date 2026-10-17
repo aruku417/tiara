@@ -147,10 +147,10 @@ entries next to each other benefit the most.
 
 ## Background
 
-tiara started as an experiment after Anthropic described replacing Git with Scion for AI-heavy development
-([Redesigning source control at Anthropic](https://www.anthropic.com/engineering/redesigning-source-control)).
-This repository is the part that works on top of plain Git and GitHub today: the server-side rebase and
-structured merging, applied before the PR instead of inside a new version-control system.
+tiara grew out of an experiment inspired by the ideas in Anthropic's post
+[Redesigning source control at Anthropic](https://www.anthropic.com/engineering/redesigning-source-control),
+such as having the tool, not the developer, take care of rebasing and conflicts. This repository is the part
+that works on top of plain Git and GitHub today: not a new version-control system, but a step before the PR.
 
 ## License
 
